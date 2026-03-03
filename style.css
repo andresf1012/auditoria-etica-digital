@@ -1,0 +1,60 @@
+:root {
+    --bg-color: #0d1117;
+    --text-color: #e6edf3;
+    --accent-color: #58a6ff;
+}
+
+body {
+    margin: 0;
+    padding: 0;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background-color: var(--bg-color);
+    color: var(--text-color);
+    overflow-x: hidden;
+}
+
+/* El fondo que se queda quieto */
+.sticky-bg {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100vh;
+    z-index: -1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transition: background 0.8s ease;
+}
+
+#visual-element {
+    width: 200px;
+    height: 200px;
+    background-color: var(--accent-color);
+    border-radius: 50%;
+    filter: blur(50px);
+    opacity: 0.5;
+    transition: all 0.8s ease;
+}
+
+/* Secciones de texto */
+.step {
+    height: 100vh; /* Ocupa toda la pantalla */
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    padding-left: 10%;
+    opacity: 0.1; /* Invisible por defecto */
+    transition: opacity 0.6s ease;
+}
+
+.step.is-active {
+    opacity: 1;
+}
+
+.content {
+    max-width: 500px;
+    background: rgba(13, 17, 23, 0.8);
+    padding: 2rem;
+    border-radius: 10px;
+}
