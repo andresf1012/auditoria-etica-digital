@@ -1,19 +1,20 @@
 :root {
-    --bg-color: #0d1117;
-    --text-color: #e6edf3;
-    --accent-color: #58a6ff;
+    --bg-dark: #010101;
+    --text-light: #ffffff;
+    --accent-magenta: #ff0050;
+    --accent-cyan: #00f2ea;
+    --glass-bg: rgba(255, 255, 255, 0.05);
 }
 
 body {
     margin: 0;
     padding: 0;
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-    background-color: var(--bg-color);
-    color: var(--text-color);
+    font-family: 'JetBrains Mono', monospace;
+    background-color: var(--bg-dark);
+    color: var(--text-light);
     overflow-x: hidden;
 }
 
-/* El fondo que se queda quieto */
 .sticky-bg {
     position: fixed;
     top: 0;
@@ -24,37 +25,60 @@ body {
     display: flex;
     justify-content: center;
     align-items: center;
-    transition: background 0.8s ease;
+    background: radial-gradient(circle at center, #111 0%, #000 100%);
 }
 
-#visual-element {
-    width: 200px;
-    height: 200px;
-    background-color: var(--accent-color);
+#visual-node {
+    width: 300px;
+    height: 300px;
+    background-color: var(--accent-cyan);
     border-radius: 50%;
-    filter: blur(50px);
-    opacity: 0.5;
-    transition: all 0.8s ease;
+    filter: blur(80px);
+    opacity: 0.4;
+    transition: all 1s cubic-bezier(0.175, 0.885, 0.32, 1.275);
 }
 
-/* Secciones de texto */
 .step {
-    height: 100vh; /* Ocupa toda la pantalla */
+    height: 100vh;
     display: flex;
     align-items: center;
-    justify-content: flex-start;
-    padding-left: 10%;
-    opacity: 0.1; /* Invisible por defecto */
-    transition: opacity 0.6s ease;
+    padding-left: 8%;
+    opacity: 0;
+    transform: translateY(50px);
+    transition: all 0.8s ease-out;
 }
 
 .step.is-active {
     opacity: 1;
+    transform: translateY(0);
 }
 
 .content {
-    max-width: 500px;
-    background: rgba(13, 17, 23, 0.8);
-    padding: 2rem;
-    border-radius: 10px;
+    max-width: 600px;
+    padding: 2.5rem;
+    background: var(--glass-bg);
+    border-left: 4px solid var(--accent-magenta);
+    backdrop-filter: blur(10px);
+    border-radius: 0 20px 20px 0;
 }
+
+.tag {
+    display: inline-block;
+    padding: 4px 12px;
+    background: var(--accent-magenta);
+    font-size: 0.7rem;
+    font-weight: bold;
+    margin-bottom: 1rem;
+    letter-spacing: 2px;
+}
+
+h1, h2 { color: var(--accent-cyan); margin-top: 0; }
+p { line-height: 1.6; font-size: 1.1rem; color: #ccc; }
+
+.scroll-indicator {
+    margin-top: 2rem;
+    font-size: 0.8rem;
+    animation: bounce 2s infinite;
+}
+
+@keyframes bounce { 0%, 20%, 50%, 80%, 100% {transform: translateY(0);} 40% {transform: translateY(-10px);} }
